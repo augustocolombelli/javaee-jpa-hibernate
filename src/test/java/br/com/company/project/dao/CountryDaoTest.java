@@ -1,5 +1,6 @@
 package br.com.company.project.dao;
 
+import br.com.company.project.dao.CountryDao;
 import br.com.company.project.model.Country;
 
 public class CountryDaoTest {
@@ -12,19 +13,24 @@ public class CountryDaoTest {
 
 	public void shouldInsertOneCountry() {
 		Country country = new Country();
-		country.setName("Brazil");
+		country.setName("New country");
 		dao.insert(country);
 	}
 	
 	public void shouldUpdateOneCountry() {
-		CountryDao dao = new CountryDao();
-		Country countryToUpdate = dao.findById(1);
-		countryToUpdate.setName("Argentina");
+		Country countryToInsert = new Country();
+		countryToInsert.setName("Country to insert");
+		int id = dao.insert(countryToInsert).getId();
+		Country countryToUpdate = dao.findById(id);
+		countryToUpdate.setName("Country updated");
 		dao.update(countryToUpdate);
 	}
 	
 	public void shouldRemoveOneCountry() {
-		dao.delete(1);
+		Country countryToInsert = new Country();
+		countryToInsert.setName("Country to insert");
+		int id = dao.insert(countryToInsert).getId();
+		dao.delete(id);
 	}
 	
 	public static void main(String[] args) {

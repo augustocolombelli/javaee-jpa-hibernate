@@ -2,17 +2,23 @@ package br.com.company.project.model;
 
 import java.util.Date;
 
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+
+@Entity
 public class Parcel {
-	private Integer number;
+
+	@EmbeddedId
+	private ParcelPK parcelPK;
 	private Date expiration;
 	private Double value;
 
-	public Integer getNumber() {
-		return number;
+	public ParcelPK getParcelPK() {
+		return parcelPK;
 	}
 
-	public void setNumber(Integer number) {
-		this.number = number;
+	public void setParcelPK(ParcelPK parcelPK) {
+		this.parcelPK = parcelPK;
 	}
 
 	public Date getExpiration() {
