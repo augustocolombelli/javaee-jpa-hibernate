@@ -21,14 +21,6 @@ public class InvoiceDaoTest {
 		invoiceItemDao = new InvoiceItemDao();
 	}
 	
-
-	public static void main(String[] args) {
-//		new InvoiceDaoTest().shouldInsertOneInvoice();
-//		new InvoiceDaoTest().shouldAddOneItem();
-//		new InvoiceDaoTest().shouldRemoveOneItem();
-		new InvoiceDaoTest().shouldRemoveOneInvoice();
-	}
-	
 	public void shouldRemoveOneInvoice() {
 		invoiceDao.delete(37);
 	}
@@ -80,4 +72,10 @@ public class InvoiceDaoTest {
 		invoiceDao.insert(invoice);
 	}
 
+	public static void main(String[] args) {
+		new InvoiceDaoTest().shouldInsertOneInvoice();
+		new InvoiceDaoTest().shouldAddOneItem();
+		new InvoiceDaoTest().shouldRemoveOneItem();
+		new InvoiceDaoTest().shouldRemoveOneInvoice();
+	}
 }

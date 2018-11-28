@@ -10,7 +10,6 @@ import br.com.company.project.util.JPAUtil;
 
 public class CityDao extends AbstractDao<City>{
 	
-	// No joins
 	public List<City> findAllCities(){
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
@@ -22,10 +21,6 @@ public class CityDao extends AbstractDao<City>{
 		return cities;
 	}
 	
-	/**
-	 * 
-	 * @return Only cities with Country
-	 */
 	public List<City> findAllCitiesWithCountry(){
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
@@ -37,7 +32,6 @@ public class CityDao extends AbstractDao<City>{
 		return cities;
 	}
 	
-	// Todas as cidades que não tenha país
 	public List<City> findAllCitiesWithAndWithoutCountry(){
 		EntityManager em = new JPAUtil().getEntityManager();
 		em.getTransaction().begin();
@@ -48,11 +42,4 @@ public class CityDao extends AbstractDao<City>{
 		em.close();
 		return cities;
 	}
-	
-	// Somente as cidades com país
-	
-	// Todos os países que não estejam em cidade
-	
-	// Todos os países e cidades
-
 }

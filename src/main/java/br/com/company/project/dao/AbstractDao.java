@@ -2,19 +2,19 @@ package br.com.company.project.dao;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaQuery;
 
 import br.com.company.project.util.JPAUtil;
 
 public abstract class AbstractDao<E> {
 
-	public AbstractDao() {
-	}
+	public AbstractDao() {}
 
 	public E insert(E entity) {
 		EntityManager em = new JPAUtil().getEntityManager();
-
 		em.getTransaction().begin();
 		em.persist(entity);
 		em.getTransaction().commit();
@@ -48,7 +48,13 @@ public abstract class AbstractDao<E> {
 	}
 
 	public Collection<E> findAll() {
-		return null;
+		EntityManager em = new JPAUtil().getEntityManager();
+		Class<E> clazz = getEntityClass();
+		CriteriaQuery<E> query = em.getCriteriaBuilder().createQuery(clazz);
+		query.select(query.from(clazz));
+		List<E> entities = em.createQuery(query).getResultList();
+		em.close();
+		return entities;
 	}
 
 	@SuppressWarnings("unchecked")
