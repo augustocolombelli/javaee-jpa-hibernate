@@ -21,7 +21,7 @@ public class CreditorDaoTest {
 	public void souldInsertOneCreditor() {
 		Creditor creditor = new Creditor();
 		City city = cityDao.findById(1000);
-		creditor.setCity(city);
+//		creditor.setCity(city);
 		creditor.setDocumentNumber(123123);
 		creditor.setName("Hector");
 		
